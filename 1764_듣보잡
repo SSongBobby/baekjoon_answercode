@@ -1,0 +1,59 @@
+#include <iostream>
+#include <map>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+    int nN{};
+    int nM{};
+    vector<string> listN{};
+    vector<string> listM{};
+    map<string, int> mapset{};
+    vector<string> answer{};
+    int nAnswerCount{};
+
+    cin >> nN;
+    cin >> nM;
+
+    for (int i = 0; i < nN; i++)
+    {
+        string sName{};
+        cin >> sName;
+
+        listN.push_back(sName);
+    }
+
+    for (int i = 0; i < nM; i++)
+    {
+        string sName{};
+        cin >> sName;
+
+        listM.push_back(sName);
+    }
+
+    for (string sName : listN)
+    {
+        mapset[sName]++;
+    }
+
+    for (string sName : listM)
+    {
+        if (mapset[sName] == 1)
+        {
+            nAnswerCount++;
+            answer.push_back(sName);
+        }
+    }
+
+    sort(answer.begin(), answer.end());
+
+    cout << nAnswerCount << endl;
+
+    for (string sName : answer)
+    {
+        cout << sName << endl;
+    }
+
+}
